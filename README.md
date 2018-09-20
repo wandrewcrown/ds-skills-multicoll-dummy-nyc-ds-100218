@@ -22,176 +22,8 @@ As with the previous class, practice importing and merging two datasets. The two
 
 
 ```python
-p1 = pd.read_csv('features.csv')
-p2 = pd.read_csv('Walmart_Sales_Forecasting.csv')
-df = pd.merge(p1, p2)
-print(len(df))
-df.head()
-```
-
-    421570
-
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Store</th>
-      <th>Date</th>
-      <th>Temperature</th>
-      <th>Fuel_Price</th>
-      <th>MarkDown1</th>
-      <th>MarkDown2</th>
-      <th>MarkDown3</th>
-      <th>MarkDown4</th>
-      <th>MarkDown5</th>
-      <th>CPI</th>
-      <th>Unemployment</th>
-      <th>IsHoliday</th>
-      <th>Dept</th>
-      <th>Weekly_Sales</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>2010-02-05</td>
-      <td>42.31</td>
-      <td>2.572</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>211.096358</td>
-      <td>8.106</td>
-      <td>False</td>
-      <td>1</td>
-      <td>24924.50</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>2010-02-05</td>
-      <td>42.31</td>
-      <td>2.572</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>211.096358</td>
-      <td>8.106</td>
-      <td>False</td>
-      <td>2</td>
-      <td>50605.27</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>2010-02-05</td>
-      <td>42.31</td>
-      <td>2.572</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>211.096358</td>
-      <td>8.106</td>
-      <td>False</td>
-      <td>3</td>
-      <td>13740.12</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>2010-02-05</td>
-      <td>42.31</td>
-      <td>2.572</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>211.096358</td>
-      <td>8.106</td>
-      <td>False</td>
-      <td>4</td>
-      <td>39954.04</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>2010-02-05</td>
-      <td>42.31</td>
-      <td>2.572</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>211.096358</td>
-      <td>8.106</td>
-      <td>False</td>
-      <td>5</td>
-      <td>32229.38</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
 # Your code here
 # Import and merge the two files.
-```
-
-
-```python
-for col in df.columns:
-    if df[col].dtype in [np.int32, np.int64, np.float32, np.float64]:
-        df[col] = df[col].astype(np.float32)
-        print('Updated {} data type.'.format(col))
-```
-
-    Updated Store data type.
-    Updated Temperature data type.
-    Updated Fuel_Price data type.
-    Updated MarkDown1 data type.
-    Updated MarkDown2 data type.
-    Updated MarkDown3 data type.
-    Updated MarkDown4 data type.
-    Updated MarkDown5 data type.
-    Updated CPI data type.
-    Updated Unemployment data type.
-    Updated Dept data type.
-    Updated Weekly_Sales data type.
-
-
-
-```python
-df.Date = pd.to_datetime(df.Date)
 ```
 
 ## pd.plotting.scater_matrix()
@@ -207,7 +39,7 @@ pd.plotting.scatter_matrix(df.drop('IsHoliday', axis=1), figsize=(15,15));
 ```
 
 
-![png](index_files/index_9_0.png)
+![png](index_files/index_6_0.png)
 
 
 ## Correlation
@@ -233,7 +65,7 @@ plt.scatter(x,y)
 
 
 
-![png](index_files/index_11_2.png)
+![png](index_files/index_8_2.png)
 
 
 
@@ -257,7 +89,7 @@ plt.scatter(x,y)
 
 
 
-![png](index_files/index_12_2.png)
+![png](index_files/index_9_2.png)
 
 
 ## Correlation versus causation
@@ -712,17 +544,7 @@ weights.sort_values(by='Percent_Change', ascending=False)
 
 
 
-
-```python
-df.Store.nunique()
-```
-
-
-
-
-    45
-
-
+Also notice how MarkDown1, the feature with the highest correlation to MarkDown4, which we removed, is the coefficient that changes the largest proportionally. This shows how the original coefficient weight was impacted by the highly correlated feature.
 
 ## Dummy Variables
 
@@ -1247,166 +1069,5 @@ Using your newly defined X above, fit a new linear regression model and print th
 
 
 ```python
-y = df['Weekly_Sales']
-
-#3) Initialize a regression object
-linreg = LinearRegression()
-
-# 4) Fit the model
-linreg.fit(X, y)
-
-# 5) Use the model to predict outputs
-df['Estimated_Weekly_Sales'] = linreg.predict(X)
-
-# 6) Measure performance
-# Here we print the model's R^2 to measure overall performance; the correlation between our model and the data
-print('R^2 model score:', linreg.score(X,y), '\n')
-
-#Save results
-new_weight_dict = dict(zip(X.columns, linreg.coef_))
-
-#Print the coefficients for the model's formula
-print('Model feature coefficients:')
-for feat, coeff in list(zip(X.columns, linreg.coef_)):
-    print(feat, 'Coefficient weight: {}'.format(round(coeff, 4)))
+#Your code here
 ```
-
-    R^2 model score: 0.6814789782658253 
-    
-    Model feature coefficients:
-    Temperature Coefficient weight: -4.3264
-    Fuel_Price Coefficient weight: -2795.6944
-    MarkDown1 Coefficient weight: -0.0237
-    MarkDown2 Coefficient weight: -0.0789
-    MarkDown3 Coefficient weight: 0.0745
-    MarkDown5 Coefficient weight: -0.0122
-    CPI Coefficient weight: -293.0222
-    Unemployment Coefficient weight: 1127.6705
-    IsHoliday Coefficient weight: 710.5935
-    Store_1 Coefficient weight: 21556.2691
-    Store_10 Coefficient weight: 1147.956
-    Store_11 Coefficient weight: 20112.5936
-    Store_12 Coefficient weight: -16195.5983
-    Store_13 Coefficient weight: 3192.806
-    Store_14 Coefficient weight: 16332.3281
-    Store_15 Coefficient weight: -16958.717
-    Store_16 Coefficient weight: 312.9134
-    Store_17 Coefficient weight: -13272.0332
-    Store_18 Coefficient weight: -10471.4477
-    Store_19 Coefficient weight: -4994.6222
-    Store_2 Coefficient weight: 26939.4036
-    Store_20 Coefficient weight: 28430.2893
-    Store_21 Coefficient weight: 9762.7127
-    Store_22 Coefficient weight: -9299.735
-    Store_23 Coefficient weight: -900.1097
-    Store_24 Coefficient weight: -6920.9958
-    Store_25 Coefficient weight: 7736.0716
-    Store_26 Coefficient weight: -10982.4843
-    Store_27 Coefficient weight: 345.5661
-    Store_28 Coefficient weight: -12784.0369
-    Store_29 Coefficient weight: -20046.6285
-    Store_3 Coefficient weight: 5926.0537
-    Store_30 Coefficient weight: 2143.5492
-    Store_31 Coefficient weight: 19368.6419
-    Store_32 Coefficient weight: 7984.8556
-    Store_33 Coefficient weight: -28382.452
-    Store_34 Coefficient weight: -17035.281
-    Store_35 Coefficient weight: -13649.461
-    Store_36 Coefficient weight: -1415.328
-    Store_37 Coefficient weight: 1861.8592
-    Store_38 Coefficient weight: -28002.4098
-    Store_39 Coefficient weight: 21338.4103
-    Store_4 Coefficient weight: 6758.6707
-    Store_40 Coefficient weight: -7825.5243
-    Store_41 Coefficient weight: 11782.5147
-    Store_42 Coefficient weight: -21782.3337
-    Store_43 Coefficient weight: 965.9028
-    Store_44 Coefficient weight: -25533.5588
-    Store_45 Coefficient weight: 413.133
-    Store_5 Coefficient weight: 4513.3093
-    Store_6 Coefficient weight: 23389.3378
-    Store_7 Coefficient weight: -456.9801
-    Store_8 Coefficient weight: 14873.0136
-    Store_9 Coefficient weight: 9721.5761
-    Dept_1 Coefficient weight: 6475.6402
-    Dept_10 Coefficient weight: 7166.5249
-    Dept_11 Coefficient weight: 1932.7746
-    Dept_12 Coefficient weight: -10858.8656
-    Dept_13 Coefficient weight: 19296.7813
-    Dept_14 Coefficient weight: 3415.007
-    Dept_16 Coefficient weight: -775.1037
-    Dept_17 Coefficient weight: -3279.4115
-    Dept_18 Coefficient weight: -5918.7384
-    Dept_19 Coefficient weight: -14949.921
-    Dept_2 Coefficient weight: 36280.2179
-    Dept_20 Coefficient weight: -9435.348
-    Dept_21 Coefficient weight: -9876.9092
-    Dept_22 Coefficient weight: -3878.0699
-    Dept_23 Coefficient weight: 11697.0621
-    Dept_24 Coefficient weight: -9088.0959
-    Dept_25 Coefficient weight: -5031.5813
-    Dept_26 Coefficient weight: -7645.4812
-    Dept_27 Coefficient weight: -13951.2331
-    Dept_28 Coefficient weight: -15072.5414
-    Dept_29 Coefficient weight: -9837.6141
-    Dept_3 Coefficient weight: -351.7132
-    Dept_30 Coefficient weight: -12010.1102
-    Dept_31 Coefficient weight: -13085.0759
-    Dept_32 Coefficient weight: -7741.774
-    Dept_33 Coefficient weight: -9037.242
-    Dept_34 Coefficient weight: -94.2582
-    Dept_35 Coefficient weight: -13003.5136
-    Dept_36 Coefficient weight: -13930.396
-    Dept_37 Coefficient weight: -16534.6699
-    Dept_38 Coefficient weight: 49702.2792
-    Dept_39 Coefficient weight: -19566.0436
-    Dept_4 Coefficient weight: 14683.5756
-    Dept_40 Coefficient weight: 37283.7275
-    Dept_41 Coefficient weight: -13770.6605
-    Dept_42 Coefficient weight: -9255.0892
-    Dept_43 Coefficient weight: -10439.9236
-    Dept_44 Coefficient weight: -10758.4159
-    Dept_45 Coefficient weight: -16606.2404
-    Dept_46 Coefficient weight: 8745.4548
-    Dept_47 Coefficient weight: -17014.908
-    Dept_48 Coefficient weight: -17069.0252
-    Dept_49 Coefficient weight: -8421.1401
-    Dept_5 Coefficient weight: 10924.6686
-    Dept_50 Coefficient weight: -17108.0
-    Dept_51 Coefficient weight: -18136.7236
-    Dept_52 Coefficient weight: -13456.0121
-    Dept_54 Coefficient weight: -16774.103
-    Dept_55 Coefficient weight: -3918.0469
-    Dept_56 Coefficient weight: -12433.9513
-    Dept_58 Coefficient weight: -13292.1909
-    Dept_59 Coefficient weight: -15480.5147
-    Dept_6 Coefficient weight: -11037.0484
-    Dept_60 Coefficient weight: -15369.2303
-    Dept_65 Coefficient weight: 31094.5457
-    Dept_67 Coefficient weight: -6721.6045
-    Dept_7 Coefficient weight: 16994.3883
-    Dept_71 Coefficient weight: -9857.8196
-    Dept_72 Coefficient weight: 45450.3851
-    Dept_74 Coefficient weight: 1281.5251
-    Dept_77 Coefficient weight: -18879.1112
-    Dept_78 Coefficient weight: -17709.232
-    Dept_79 Coefficient weight: 9517.9258
-    Dept_8 Coefficient weight: 19863.8941
-    Dept_80 Coefficient weight: -3388.2958
-    Dept_81 Coefficient weight: 1491.6814
-    Dept_82 Coefficient weight: 4465.9752
-    Dept_83 Coefficient weight: -12763.4493
-    Dept_85 Coefficient weight: -13212.8445
-    Dept_87 Coefficient weight: 2843.023
-    Dept_9 Coefficient weight: 8732.0079
-    Dept_90 Coefficient weight: 36060.5999
-    Dept_91 Coefficient weight: 22752.1766
-    Dept_92 Coefficient weight: 73954.026
-    Dept_93 Coefficient weight: 13849.4863
-    Dept_94 Coefficient weight: 18058.3627
-    Dept_95 Coefficient weight: 62517.6892
-    Dept_96 Coefficient weight: -424.3339
-    Dept_97 Coefficient weight: -68.9744
-    Dept_98 Coefficient weight: -8953.2378
-    Dept_99 Coefficient weight: -19257.5683
-
