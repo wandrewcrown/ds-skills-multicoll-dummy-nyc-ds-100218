@@ -163,34 +163,6 @@ df.head()
 
 
 ```python
-# Your code here
-# Import and merge the two files.
-```
-
-
-```python
-for col in df.columns:
-    if df[col].dtype in [np.int32, np.int64, np.float32, np.float64]:
-        df[col] = df[col].astype(np.float32)
-        print('Updated {} data type.'.format(col))
-```
-
-    Updated Store data type.
-    Updated Temperature data type.
-    Updated Fuel_Price data type.
-    Updated MarkDown1 data type.
-    Updated MarkDown2 data type.
-    Updated MarkDown3 data type.
-    Updated MarkDown4 data type.
-    Updated MarkDown5 data type.
-    Updated CPI data type.
-    Updated Unemployment data type.
-    Updated Dept data type.
-    Updated Weekly_Sales data type.
-
-
-
-```python
 df.Date = pd.to_datetime(df.Date)
 ```
 
@@ -207,7 +179,7 @@ pd.plotting.scatter_matrix(df.drop('IsHoliday', axis=1), figsize=(15,15));
 ```
 
 
-![png](index_files/index_9_0.png)
+![png](index_files/index_7_0.png)
 
 
 ## Correlation
@@ -233,7 +205,7 @@ plt.scatter(x,y)
 
 
 
-![png](index_files/index_11_2.png)
+![png](index_files/index_9_2.png)
 
 
 
@@ -257,7 +229,7 @@ plt.scatter(x,y)
 
 
 
-![png](index_files/index_12_2.png)
+![png](index_files/index_10_2.png)
 
 
 ## Correlation versus causation
